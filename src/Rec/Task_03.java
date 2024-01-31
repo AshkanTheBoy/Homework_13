@@ -1,11 +1,15 @@
 package Rec;
-
+/*
+В кафе есть меню из двух видов блюд на первое, трех - на второе и двух - на третье.
+Выведите все возможные сочетания заказов из двух или трех блюд. Названия блюд подберите.
+Вместо блюд - [0,1][2,3,4][5,6] - результат такой же
+ */
 import java.util.Arrays;
 
 public class Task_03 {
-    static int[] firstMeals = new int[3],
-                secondMeals = new int[4],
-                thirdMeals = new int[4];
+    static int[] firstMeals = new int[2],
+                secondMeals = new int[3],
+                thirdMeals = new int[2];
     static int[][] allMeals = {firstMeals,secondMeals,thirdMeals};
     static int[] order = new int[3];
 
