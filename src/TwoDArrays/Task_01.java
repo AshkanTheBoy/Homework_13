@@ -1,3 +1,5 @@
+package TwoDArrays;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -19,12 +21,11 @@ public class Task_01 {
 
         System.out.println();
         sortLengths();
-        System.out.println();
         printResult();
 
     }
 
-    static int[][] sortLengths(){
+    static void sortLengths(){
         int[] lengths = new int[arr.length];
         for (int i = 0; i < lengths.length; i++) {
             lengths[i] = arr[i].length;
@@ -43,7 +44,6 @@ public class Task_01 {
                 }
             }
         }
-        return arr;
     }
 
     static void printResult(){

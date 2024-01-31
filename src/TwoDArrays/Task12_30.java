@@ -1,29 +1,34 @@
+package TwoDArrays;
+
 import java.util.Arrays;
+
 /*
-12.28 | 12.29
-Заполнить двумерный массив размером 5x5 по спирали
-[1 , 2 , 3 , 4 , 5]
-[16, 17, 18, 19, 6]
-[15, 24, 25, 20, 7]
-[14, 23, 22, 21, 8]
-[13, 12, 11, 10, 9]
+Дан двумерный массив размером 9x9.
+Построить последовательность чисел,
+получающуюся при чтении этого массива по спирали
  */
-public class Task12_28 {
-    static int size = 5;
-    static int number = 1,
+public class Task12_30 {
+    static int size = 9,
+                count = 0,
                 upOffSet = 0,
                 rightOffSet = 0,
                 botOffSet = 0,
-                leftOffSet = 0;
+                leftOffSet = 0,
+                startNumber = 1,
+                numberOffSet = 1,
+                currentNumber = startNumber+numberOffSet;
+
 
     static int[][] arr = new int[size][size];
     public static void main(String[] args) {
-        while (number<size*size+1){
+        System.out.print(startNumber+" ");
+        while (count<size*size-1){
             fillUpRow();
             fillRightCol();
             fillBotRow();
             fillLeftCol();
         }
+        System.out.println();
         print();
     }
 
@@ -32,7 +37,10 @@ public class Task12_28 {
             if (arr[leftOffSet][index]>0){
                 break;
             }
-            arr[leftOffSet][index] = number++;
+            arr[leftOffSet][index] = currentNumber;
+            count++;
+            printNumber();
+            addOffset();
         }
         upOffSet++;
     }
@@ -42,7 +50,10 @@ public class Task12_28 {
             if (arr[index][size-upOffSet]>0){
                 break;
             }
-            arr[index][size-upOffSet] = number++;
+            arr[index][size-upOffSet] = currentNumber;
+            count++;
+            printNumber();
+            addOffset();
         }
         rightOffSet++;
     }
@@ -52,7 +63,10 @@ public class Task12_28 {
             if (arr[size-rightOffSet][index]>0){
                 break;
             }
-            arr[size-rightOffSet][index] = number++;
+            arr[size-rightOffSet][index] = currentNumber;
+            count++;
+            printNumber();
+            addOffset();
         }
         botOffSet++;
     }
@@ -62,13 +76,24 @@ public class Task12_28 {
             if (arr[index][leftOffSet]>0){
                 break;
             }
-            arr[index][leftOffSet] = number++;
+            arr[index][leftOffSet] = currentNumber;
+            count++;
+            printNumber();
+            addOffset();
         }
         leftOffSet++;
     }
 
+    static void printNumber(){
+        System.out.print(currentNumber+" ");
+    }
+
+    static void addOffset(){
+        currentNumber+=numberOffSet;
+    }
+
     static void print(){
-        for (int[] cell: arr){
+        for(int[] cell: arr){
             System.out.println(Arrays.toString(cell));
         }
     }
